@@ -7,19 +7,17 @@
   
   <style>
     /* CSS styles go here */
-    html {
+    body {
       box-sizing: border-box;
-      background: #DDDDDD;
+      background: #DDDDDD url('https://www.liners.dk/ship-dk/Frederik_VIII/images/9.jpg') no-repeat center center fixed;
+      background-size: cover;
       font-family: 'helvetica neue';
       font-size: 20px;
       font-weight: 100;
-    }
-
-    body {
       margin: 0;
       padding: 0;
     }
-    
+
     header {
       background-color: #EDEDED;
       color: #474747;
@@ -28,28 +26,33 @@
       font-size: 30px;
       border-bottom: 1px solid #888888;
       user-select: none;
-      margin: 0;
     }
     
-    .prologue {
+    .text-box {
       background-color: #EDEDED;
       color: #474747;
       padding: 15px;
       text-align: center;
-      margin: 80px auto;
+      margin: 40px auto;
       max-width: 800px;
       border-radius: 15px;
       border: 1px solid #888888;
       user-select: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 5s ease, transform 5s ease;
     }
     
-    .prologue h2 {
+    .text-box h2 {
       font-size: 45px;
       font-weight: bold;
       margin: 0;
     }
     
-    
+    .text-box.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -57,9 +60,70 @@
     <h1>The Promise of America</h1>
   </header>
   
-  <div class="prologue">
+  <div class="text-box">
     <h2>Prologue</h2>
     <p>Once upon a time, in a small village in Denmark, there lived a young boy named Marius C. Miller. Marius came from a family of millers, and his father, Christen Moller, owned a successful milling company. Marius loved spending time in the mill, watching the big wheels turn and feeling the soft flour between his fingers. He dreamed of becoming a miller just like his father one day.</p>
   </div>
+  
+  <!-- Additional Prologue Boxes -->
+  <div class="text-box">
+    <p>Marius gathered his family and shared his dreams with them. With their blessings, he bid them farewell and embarked on an incredible journey across the vast Atlantic Ocean aboard a magnificent ship called the Oscar II. On the ship, Marius met many other people just like him, all filled with hope and dreams of a better life in America. They shared stories, made new friends, and looked out at the endless blue sea, thinking about the life they left behind in Denmark and the new opportunities that awaited them in America.
+</p>
+  </div>
+  
+  <div class="text-box">
+    <p>After several weeks of sailing, the ship finally arrived at the majestic New York Harbor. Marius felt a mix of excitement and nervousness as he stepped onto the land of the United States of America. He didn't have much money or any connections there, but he held onto the skills his loving father had taught him. With determination in his heart, Marius set out to find a job in a bustling city called Chicago, which was in the state of Illinois. He knew that by working hard, he could create a new home for himself in this new land.
+</p>
+  </div>
+  
+  <div class="text-box">
+    <p>Just when Marius was starting to settle into his new life, he received a letter from his siblings back in Denmark with heartbreaking news. Their dear father, Christen Moller, had suddenly passed away. It was a difficult time for the family, especially Marius's older brothers, Rasmus and Jens. Their father's milling company had fallen on hard times after his death, and they were struggling to keep the business going without his expertise. Marius was faced with a tough decision: should he return home to Denmark to help his family or should he stay in America to pursue his own dreams?
+</p>
+  </div>
+  
+  <div class="text-box">
+    <p>Marius thought long and hard about what to do. He loved his family dearly and wanted to support them, but he also had his own dreams and goals in America. After much consideration, Marius made the difficult choice to stay in America. He believed that by working hard and persevering, he could make a difference not only in his own life but also in the lives of his loved ones. So, he continued to work diligently and started saving money little by little. With time, he was able to send some money back to Denmark to help his brothers keep their father's company afloat.
+</p>
+  </div>
+  
+  <div class="text-box">
+    <p>Marius didn't give up on his dreams. He worked tirelessly, and his determination paid off. Slowly but steadily, he saved up enough money to start his own business in Chicago. He became a successful businessman, and his dedication allowed him to provide for himself and his family. While Marius was excited about his new life in America, he couldn't help but feel a twinge of sadness and longing for the life he left behind. He missed his family and the mill where he grew up.
+</p>
+  </div>
+  
+  <div class="text-box">
+    <p>Marius's decision to remain paid off, and he was able to achieve his dreams while still supporting his family. Marius's success in America not only benefited him and his family but also inspired his friends and local community to pursue their dreams and work hard to achieve them.
+</p>
+  </div>
+  
+  <div class="text-box">
+    <h2>Epilogue</h2>
+    <p> Marius's journey from Denmark to America represented a quest for a better future. Through determination and resilience, he turned challenges into opportunities, leaving behind a lasting legacy of hard work and success. His story serves as a reminder that even when faced with difficult choices, one can find their own path to happiness and inspire others along the way.
+</p>
+  </div>
+  
+   <script>
+    function isElementInViewport(element) {
+      var rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+    
+    function handleScroll() {
+      var prologueElements = document.getElementsByClassName('text-box');
+      for (var i = 0; i < prologueElements.length; i++) {
+        if (isElementInViewport(prologueElements[i])) {
+          prologueElements[i].classList.add('in-view');
+        }
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll);
+  </script>
 </body>
 </html>
+
